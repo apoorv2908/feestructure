@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Dropdowns</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
+.abc{
+  font-family: "Afacad", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: large;
+  margin-left: 30px;
+  margin-top: 30px ;
+}
+
+input::placeholder{
+  font-family: "Afacad", sans-serif;
+  margin-left: 20px;
+  font-size: larger;
+
+}
+
+select{
+  font-family: "Afacad", sans-serif;
+  margin-left: 20px;
+  font-size: smaller;
+}
+
+.xyz{
+  width: 70%;
+  border-radius: 5px;
+  height: 20px;
+  margin-left: 20px;
+
+
+}
+
+.xyzz{
+  width: 70%;
+  border-radius: 5px;
+  height: 25px;
+
+}
+
+p{
+    font-size: 20px;
+    text-align: center;
+    background-color: lightblue;
+    border-radius: 10px;
+}
+
+.xyza{
+   width: 10%;
+  border-radius: 5px;
+  height: 25px;
+  margin-left: 10px;
+}
+
+.mno{
+  margin-left: 20px;
+}
+
+.dltbtn{
+  width: 50px;
+  height: 30px;
+  margin-left: 20px;
+  background-color: crimson;
+  border-radius: 10px;
+  color: white;
+  font-family: "Afacad", sans-serif;
+  cursor: pointer;
+  border-color: white;
+
+  font-size: small;
+}
+
+.dltbtn:hover{
+  background-color: brown;
+}
+
+.addbtn{
+  width: 120px;
+  height: 30px;
+  background-color: lightgreen;
+  border-radius: 10px;
+  color: black;
+  font-family: "Afacad", sans-serif;
+  cursor: pointer;
+  font-size: small;
+  border-color: white;
+  
+}
+
+.addbtn:hover{
+  background-color: darkgreen;
+  color: white;
+}
+.sbtbtn{
+  width: 70px;
+  height: 35px;
+  margin-left: 1355px;
+  margin-top: 20px;
+  background-color: lightblue;
+  border-radius: 10px;
+  color: black;
+  font-family: "Afacad", sans-serif;
+  cursor: pointer;
+  font-size: smaller;
+  border-color: white;
+}
+
+.sbtbtn:hover{
+  background-color: blue;
+  color: white;
+}
+h1{
+    background-color: lightblue;
+    border-radius: 10px;
+    font-family: "Afacad", sans-serif;
+
+}
+
+</style>
+</head>
+<body>
+
+<h1>Add Fee Structure</h1>
+
+<form id="inputForm" action="save.php" method="post"  class= "abc" >
+  <!-- Fee Header Title -->
+  <label for="feeHeader">Fee Header Title: *</label>
+  <input class = "xyz" type="text" name="feeHeader" id="feeHeader" required>
+
+  <br><br>
+
+  <!-- Academic Session Dropdown -->
+  <label for="academicSession">Academic Session: *</label>
+  <select name="academicSession" id="academicSession" class= "xyzz" required>
+    <option value="2023-2024">2023-2024</option>
+    <option value="2024-2025">2024-2025</option>
+    <option value="2025-2026">2025-2026</option>
+    <!-- Add more options as needed -->
+  </select>
+
+    <br><br>
+
+
+  <!-- Select Wings Dropdown -->
+  <label for="selectWings">Select Wings: *</label>
+  <select name="selectWings" id="selectWings" class= "xyzz" required>
+    <option value="Foundation">Foundation</option>
+    <option value="Middle">Middle</option>
+    <option value="Primary">Primary</option>
+    <option value="Secondary">Secondary</option>
+  </select>
+
+    <br><br>
+
+
+  <!-- Select Class Section Dropdown -->
+  <label for="selectClassSection">Select Class Section: *</label>
+  <select name="selectClassSection" id="selectClassSection" class= "xyzz" required>
+    <!-- Options will be populated dynamically -->
+  </select>
+
+    <br>
+
+    <br>
+
+
+    <!--January-->
+
+
+    <br>
+    <p>January</p>
+    <br>
+    <div id="inputContainer1">
+        <div class= "inputSet">
+            </div>
+    </div>
+    <br>
+    <button type="button" id="addInput1" class= "addbtn"> + Add More Entries</button>
+
+    <!--Febraury-->
+    <br>
+    <p>February</p>
+    <br>
+    <div id="inputContainer2">
+        <div class= "inputSet">
+        </div>
+    </div>
+    <br>
+    <button type="button" id="addInput2" class= "addbtn"> + Add More Entries</button>
+    
+    <!--March-->
+    <br>
+    <p>March</p>
+    <br>
+    <div id="inputContainer3">
+        <div class= "inputSet">
+        </div>
+    </div>
+    <br>
+    <button type="button" id="addInput3" class= "addbtn"> + Add More Entries</button>
+    <br>
+
+    <!--April-->
+    <br>
+    <p>April</p>
+    <br>
+    <div id="inputContainer4">
+        <div class= "inputSet">
+        </div>
+    </div>
+    <br>
+    <button type="button" id="addInput4" class= "addbtn" > + Add More Entries</button>
+    <br>
+
+
+    <!--May-->
+    <br>
+    <p>May</p>
+    <br>
+    <div id="inputContainer5">
+        <div class= "inputSet">
+        </div>
+    </div>
+    <br>
+    <button type="button" id="addInput5" class= "addbtn"> + Add More Entries</button>
+    <br>
+
+    <!--June-->
+    <br>
+    <p>June</p>
+    <br>
+    <div id="inputContainer6">
+        <div class= "inputSet">
+        </div>
+    </div>
+    <br>
+    <button type="button" id="addInput6" class= "addbtn"> + Add More Entries</button>
+    <br>
+
+    <!--July-->
+    <br>
+    <p>July</p>
+    <br>
+    <div id="inputContainer7">
+        <div class= "inputSet">
+        </div>
+    </div>
+    <br>
+    <button type="button" id="addInput7" class= "addbtn"> + Add More Entries</button>
+    <br>
+
+    <!--August-->
+    <br>
+    <p>August</p>
+    <br>
+    <div id="inputContainer8">
+        <div class= "inputSet">
+        </div>
+    </div>
+    <br>
+    <button type="button" id="addInput8" class= "addbtn"> + Add More Entries</button>
+    <br>
+
+    <!--September-->
+    <br>
+    <p>September</p>
+    <br>
+    <div id="inputContainer9">
+
+    <div class= "inputSet">
+    </div>
+    </div>
+    <br>
+    <button type="button" id="addInput9" class= "addbtn"> + Add More Entries</button>
+    <br>
+
+
+    <!--October-->
+    <br>
+    <p>October</p>
+    <br>
+    <div id="inputContainer10">
+
+    <div class= "inputSet">
+    </div>
+    </div>
+    <br>
+    <button type="button" id="addInput10" class= "addbtn"> + Add More Entries</button>
+    <br>
+
+    <!--November-->
+    <br>
+    <p>November</p>
+    <br>
+    <div id="inputContainer11">
+
+    <div class= "inputSet">
+    </div>
+    </div>
+    <br>
+    <button type="button" id="addInput11" class= "addbtn"> + Add More Entries</button>
+    <br>
+
+    <!--December-->
+    <br>
+    <p>December</p>
+    <br>
+    <div id="inputContainer12">
+
+    <div class= "inputSet">
+    </div>
+    </div>
+    <br>
+    <button type="button" id="addInput12" class= "addbtn"> + Add More Entries</button>
+    <br><br>
+  <button type="submit" class= "sbtbtn">Save</button>
+</form>
+
+<script>
+$(document).ready(function(){
+  // Function to populate the second dropdown based on the selection in the first dropdown
+  $(document).on('change', '.mainHeader', function(){
+    var selectedOption = $(this).val();
+    var options = [];
+
+    // Clear existing options
+    $(this).closest('div').find('.subHeader').empty();
+
+    // Populate options based on selected option in first dropdown
+    if(selectedOption === "Option1") {
+      options = ["Sub Option 1-1", "Sub Option 1-2", "Sub Option 1-3"];
+    } else if(selectedOption === "Option2") {
+      options = ["Sub Option 2-1", "Sub Option 2-2", "Sub Option 2-3"];
+    } else if(selectedOption === "Option3") {
+      options = ["Sub Option 3-1", "Sub Option 3-2", "Sub Option 3-3"];
+    } else if(selectedOption === "Option4") {
+      options = ["Sub Option 4-1", "Sub Option 4-2", "Sub Option 4-3"];
+    } else if(selectedOption === "Option5") {
+      options = ["Sub Option 5-1", "Sub Option 5-2", "Sub Option 5-3"];
+    }
+
+    // Append options to second dropdown
+    var subHeaderSelect = $(this).closest('div').find('.subHeader');
+    for(var i = 0; i < options.length; i++) {
+      subHeaderSelect.append('<option value="' + options[i] + '">' + options[i] + '</option>');
+    }
+  });
+
+  // Function to populate class section dropdown based on selected wings
+  $('#selectWings').change(function() {
+    var selectedWings = $(this).val();
+    var classSectionDropdown = $('#selectClassSection');
+    classSectionDropdown.empty();
+
+    if(selectedWings === "Foundation") {
+      classSectionDropdown.append('<option value="K1">K1</option><option value="K2">K2</option><option value="Nursery">Nursery</option>');
+    } else if(selectedWings === "Middle") {
+      classSectionDropdown.append('<option value="06-A">06-A</option><option value="07-A">07-A</option><option value="08-A">08-A</option>');
+    } else if(selectedWings === "Primary") {
+      classSectionDropdown.append('<option value="01 A">01 A</option><option value="02 A">02 A</option><option value="03 A">03 A</option><option value="04 A">04 A</option><option value="05 A">05 A</option>');
+    } else if(selectedWings === "Secondary") {
+      classSectionDropdown.append('<option value="09 A">09 A</option><option value="10 A">10 A</option>');
+    }
+  });
+
+  // Trigger change event for wings to populate class section dropdown initially
+  $('#selectWings').trigger('change');
+
+  // Add input fields dynamically
+  $("#addInput1").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required> 
+          <option value="January">January</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer1").append(newInputSet)
+
+
+
+    
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+});
+
+
+
+
+$("#addInput2").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="Febraury">Febraury</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer2").append(newInputSet)
+
+
+
+    
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+
+  $("#addInput3").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="March">March</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer3").append(newInputSet)
+    
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+
+  $("#addInput4").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="April">April</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer4").append(newInputSet)
+
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+
+  $("#addInput5").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="May">May</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer5").append(newInputSet)
+    
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+
+  $("#addInput6").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="June">June</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer6").append(newInputSet)
+
+
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+
+  $("#addInput7").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="July">July</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer7").append(newInputSet)
+
+
+
+    
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+
+  $("#addInput8").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="August">August</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer8").append(newInputSet)
+
+
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+
+  $("#addInput9").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="September">September</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer9").append(newInputSet)
+    
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+
+  $("#addInput10").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="October">October</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer10").append(newInputSet)
+
+    
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+
+  $("#addInput11").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="November">November</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer11").append(newInputSet)
+    
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+
+  $("#addInput12").click(function(){
+    var newInputSet = `
+      <div class="inputSet">
+        <select name="month[]" class="selectMonth xyza" style = "visibility: hidden;" required>
+          <option value="December">December</option>
+        </select>
+        <label class= "mno">   Main Header</label>
+        <select name="main_header[]" class="mainHeader xyza">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+          <option value="Option4">Option 4</option>
+          <option value="Option5">Option 5</option>
+        </select>
+        <label class= "mno">   Sub Header</label>
+        <select name="sub_header[]" class="subHeader xyza"></select>
+        <label class= "mno">Select Type </label>
+        <input type="text" name="type[]" placeholder="Enter type" class = "xyza">
+
+        <label class= "mno">Enter Amount </label>
+        <input type="text" name="amount[]" placeholder="Enter amount" class = "xyza">
+        <button type="button" class="deleteInput dltbtn" >Delete</button>
+      </div>
+    `;
+    $("#inputContainer12").append(newInputSet)
+
+
+
+    
+    // Trigger change event for main header to populate sub header dropdown
+    $('.mainHeader').last().trigger('change');
+  });
+   // Delete input set
+  
+  $('.deleteInput').prop('disabled', false);
+
+  // Delete input set
+  $(document).on('click', '.deleteInput', function(){
+    // Disable delete button if only one input set left
+    if ($('.inputSet').length === 0) {
+      $(this).prop('disabled', true);
+    }
+    $(this).closest('.inputSet').remove();
+  });
+</script>
+
+</body>
+</html>
